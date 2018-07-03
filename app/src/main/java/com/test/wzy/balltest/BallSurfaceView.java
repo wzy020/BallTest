@@ -12,11 +12,13 @@ public class BallSurfaceView extends SurfaceView implements SurfaceHolder.Callba
     MainActivity mMainActivity;
     private Ball ball;
     SurfaceHolder holder;
+    private int startX = 20;
+    private int startY = 20;
 
     public BallSurfaceView(Context context) {
         super(context);
         this.mMainActivity = (MainActivity)context;
-        ball = new Ball(20, 20, this);
+        ball = new Ball(startX, startY, this);
         holder = this.getHolder();
         holder.addCallback(this);
     }
@@ -69,7 +71,7 @@ public class BallSurfaceView extends SurfaceView implements SurfaceHolder.Callba
     public void reSetBall() {
         if (!ball.stop) return;
         ball.stop = true;
-        ball.reSet(20, 20);
+        ball.reSet(startX, startY);
         new RefreshThread().start();
     }
 
